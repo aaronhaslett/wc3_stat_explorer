@@ -10,10 +10,10 @@ const creatures = [
 ];
 
 const creatureSelected = (other: HTMLSelectElement) => (e:Event) => {
-  div.textContent = result;
+  div.textContent = (e.target as HTMLSelectElement).value;
 };
 
-const sel = document.createElement('select');
+const sel = document.createElement('select') as HTMLSelectElement;
 creatures.forEach(([name, ...fields]) => {
 
   const opt = document.createElement('option');
@@ -25,7 +25,7 @@ creatures.forEach(([name, ...fields]) => {
 const div = document.createElement('div');
 
 window.onload = () => {
-  const rightSel = sel.cloneNode(true);
+  const rightSel = sel.cloneNode(true) as HTMLSelectElement;
 
   sel.addEventListener('change', creatureSelected(rightSel));
   rightSel.addEventListener('change', creatureSelected(sel));
